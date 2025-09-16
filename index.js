@@ -6,12 +6,13 @@ const mysql = require("mysql");
 const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 app.use(cors());
+require("dotenv").config();
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "products",
+  host: process.env.CLEVER_CLOUD_HOST,
+  user: process.env.CLEVER_CLOUD_USER,
+  password: process.env.CLEVER_CLOUD_PASSWORD,
+  database: process.env.CLEVER_CLOUD_DB,
 });
 
 connection.connect();
