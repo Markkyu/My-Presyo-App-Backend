@@ -8,15 +8,9 @@ const cors = require("cors");
 
 // need this for vercel api
 // I used vercel api for faster fetch
-app.use(
-  cors({
-    origin: "*", // allow all origins
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors());
 
-require("dotenv").config();
+require("dotenv").config(); // to enable .env variables
 
 const connection = mysql.createConnection({
   host: process.env.CLEVER_CLOUD_HOST,
@@ -183,9 +177,6 @@ app.delete("/api/products", (req, res) => {
   );
 });
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port http://localhost:${PORT}`);
-// });
-
-// ✅ Export instead of app.listen()
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server is running on port http://localhost:${PORT}`);
+});
