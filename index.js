@@ -173,6 +173,9 @@ app.delete("/api/products", (req, res) => {
   );
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port http://localhost:${PORT}`);
+// });
+
+// ✅ Export instead of app.listen()
+module.exports = app;
