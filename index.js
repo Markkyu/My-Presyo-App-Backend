@@ -5,7 +5,17 @@ app.use(express.urlencoded({ extended: false }));
 const mysql = require("mysql");
 const PORT = process.env.PORT || 3000;
 const cors = require("cors");
-app.use(cors());
+
+// need this for vercel api
+// I used vercel api for faster fetch
+app.use(
+  cors({
+    origin: "*", // allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 require("dotenv").config();
 
 const connection = mysql.createConnection({
